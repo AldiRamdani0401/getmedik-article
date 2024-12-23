@@ -1,13 +1,11 @@
 import { useContentHeader } from "../../../../utils/context/ContentHeaderContext";
 
-const DashboardArticle = () => {
+const DashboardDatabase = () => {
   // use context
   const [_, setContentHeader] = useContentHeader();
-  setContentHeader("Article Management");
+  setContentHeader("Database Management");
 
-  return(
-    <h1>Dashboard Article</h1>
-  );
+  return <h1>Dashboard Database</h1>;
 };
 
-export default DashboardArticle;
+export default DashboardDatabase;

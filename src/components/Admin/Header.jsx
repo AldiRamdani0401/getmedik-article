@@ -5,8 +5,13 @@ import HamburgerMenu from "../icons/HamburgerMenu.jsx";
 import CloseMenu from "../icons/CloseMenu.jsx";
 import NavMenu from "../mobile/GeneralUser/NavMenu.jsx";
 
-import { logoGmDark, logoGmLight, Person3 } from "../../assets/images/index.jsx";
-import CircleProfile from "./fragments/CircleProfile/index.jsx";
+import {
+  logoGmDark,
+  logoGmLight,
+  Person3,
+} from "../../assets/images/index.jsx";
+import CircleProfile from "./fragments/Navbar/CircleProfile/index.jsx";
+import Message from "./fragments/Navbar/Message/index.jsx";
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = createSignal(false);
@@ -26,7 +31,7 @@ const Header = (props) => {
       <ul class="flex justify-between items-center text-gray-200">
         {/* Container 1 */}
         <li class="h-full">
-        {/* Logo */}
+          {/* Logo */}
           <a href="/admin" class="flex flex-row gap-2">
             <div class="text-xl font-extrabold ">
               <span class="text-green-300">Get</span>
@@ -42,11 +47,10 @@ const Header = (props) => {
             <img src={Person3} alt="" class="h-10 w-10 rounded-full" />
           </div>
           {/* Message */}
-          <div>
-            <img src={Person3} alt="" class="h-10 w-10 rounded-full" />
-          </div>
+
+          <Message />
           {/* Circle Profile */}
-          <CircleProfile/>
+          <CircleProfile />
         </li>
         {/* Mobile Menu */}
         {/* <div class="block lg:hidden">
