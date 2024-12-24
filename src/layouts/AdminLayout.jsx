@@ -9,10 +9,14 @@ import handleScroll from "../utils/effects/Scroll";
 
 // Hooks
 import { ContentHeaderProvider } from "../utils/context/ContentHeaderContext";
+import MessageApp from "../components/Admin/fragments/MessageApp";
 
 const AdminLayout = (props) => {
   const [isScrolled, setIsScrolled] = createSignal(false);
   const [contentHeader, setContentHeader] = createSignal("Dashboard");
+
+  // Message App
+  const [openMsgApp, setOpenMsgApp] = createSignal(false);
 
   let mainLayout = null;
 
@@ -26,8 +30,8 @@ const AdminLayout = (props) => {
 
   return (
     <div id="main-layout" class="flex flex-col h-screen overflow-hidden">
-      <Header state={isScrolled} />
-      <main class="flex flex-row h-[90%] xl:h-full">
+      <Header state={isScrolled} setOpenMsgApp={setOpenMsgApp} />
+      <main class="relative flex flex-row h-[95%] lg:h-[95%] xl:h-full">
         {/* Sidebar */}
         <SideBar />
         {/* Component / Content */}
@@ -40,7 +44,7 @@ const AdminLayout = (props) => {
             <hr class="bg-[#eaeaea] py-[2px] px-3" />
             {props.children}
           </div>
-          <SideBar />
+          <MessageApp open={openMsgApp} />
         </ContentHeaderProvider>
       </main>
       {/* <Footer /> */}
