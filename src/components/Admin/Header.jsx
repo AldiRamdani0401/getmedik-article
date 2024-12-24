@@ -12,6 +12,8 @@ import {
 } from "../../assets/images/index.jsx";
 import CircleProfile from "./fragments/Navbar/CircleProfile/index.jsx";
 import Message from "./fragments/Navbar/Message/index.jsx";
+import NotificationIcon from "../icons/NotificationIcon.jsx";
+import Notification from "./fragments/Navbar/Notification/index.jsx";
 
 const Header = (props) => {
   const [isOpen, setIsOpen] = createSignal(false);
@@ -43,12 +45,11 @@ const Header = (props) => {
         {/* Container 2 */}
         <li class="flex flex-row gap-3 border">
           {/* Notification */}
-          <div>
-            <img src={Person3} alt="" class="h-10 w-10 rounded-full" />
-          </div>
-          {/* Message */}
+          <Notification/>
 
-          <Message />
+          {/* Message */}
+          <Message setState={props.setOpenMsgApp} />
+
           {/* Circle Profile */}
           <CircleProfile />
         </li>

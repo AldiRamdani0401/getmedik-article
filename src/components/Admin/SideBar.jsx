@@ -1,97 +1,106 @@
 // Icons
+import { useLocation } from "@solidjs/router";
 import AdminIcon from "../icons/AdminIcon";
-import ArticleIcon from "../icons/ArticleIcon";
-import BrushIcon from "../icons/BrushIcon";
 import ContentIcon from "../icons/ContentIcon";
 import DatabaseIcon from "../icons/DatabaseIcon";
 import IconDashboard from "../icons/IconDashboard";
 import SettingIcon from "../icons/SettingIcon";
 import Footer from "./Footer";
+import ArticleIcon from "../icons/ArticleIcon";
+import BrushIcon from "../icons/BrushIcon";
 
 const SideBar = () => {
+  // style li
+  const styleLi = {
+    default:
+      "group text-[#0b5555] border-b hover:bg-[#0b5555] hover:text-white hover:font-semibold",
+    active: ["text-white bg-[#0b5555] font-semibold"],
+  };
+
+  // Location hook
+  const location = useLocation();
+
+  // Active class handler
+  const active = (path) => {
+    return location.pathname === path
+      ? `${styleLi.default} ${styleLi.active}`
+      : styleLi.default;
+  };
+
   return (
-    <aside class="sticky top-0 flex flex-col xl:h-[92.5%] justify-between w-[250px] bg-slate-100 select-none">
+    <aside class="sticky top-0 flex flex-col xl:h-full justify-between w-[250px] bg-slate-100 select-none">
       <div>
         <h1 class="p-4 bg-[#0E8181] text-white text-xl font-semibold">
           <a href="/admin">Admin Panel</a>
         </h1>
         <ul class="flex flex-col">
-          {/* Dashboard */}
-          <li class="group text-[#0b5555] border-b hover:bg-[#0b5555]">
+          <li class={active("/admin")}>
             <a href="/admin" class="flex flex-row gap-2 p-3">
-              <span class="group-hover:text-white">
+              <span>
                 <IconDashboard />
               </span>
-              <span class="text-base group-hover:text-white group-hover:font-semibold">
-                Dashboard
-              </span>
+              <span>Dashboard</span>
             </a>
           </li>
-          {/* Article Management */}
-          <li class="group text-[#0b5555] border-b hover:bg-[#0b5555]">
+          <li class={active("/admin/management/article")}>
             <a href="/admin/management/article" class="flex flex-row gap-2 p-3">
-              <span class="group-hover:text-white">
+              <span>
                 <ArticleIcon size={24} />
               </span>
-              <span class="text-base group-hover:text-white group-hover:font-semibold">
+              <span>
                 Article Management
               </span>
             </a>
           </li>
-          {/* Creator Management */}
-          <li class="group text-[#0b5555] border-b hover:bg-[#0b5555]">
+          <li class={active("/admin/management/creator")}>
             <a href="/admin/management/creator" class="flex flex-row gap-2 p-3">
-              <span class="group-hover:text-white">
+              <span>
                 <BrushIcon size={24} />
               </span>
-              <span class="text-base group-hover:text-white group-hover:font-semibold">
+              <span>
                 Creator Management
               </span>
             </a>
           </li>
-          {/* Content Management */}
-          <li class="group text-[#0b5555] border-b hover:bg-[#0b5555]">
+          <li class={active("/admin/management/content")}>
             <a href="/admin/management/content" class="flex flex-row gap-2 p-3">
-              <span class="group-hover:text-white">
+              <span>
                 <ContentIcon />
               </span>
-              <span class="text-base group-hover:text-white group-hover:font-semibold">
+              <span>
                 Content Management
               </span>
             </a>
           </li>
-          {/* Database Management */}
-          <li class="group text-[#0b5555] border-b hover:bg-[#0b5555]">
+          <li class={active("/admin/management/database")}>
             <a
               href="/admin/management/database"
               class="flex flex-row gap-2 p-3"
             >
-              <span class="group-hover:text-white">
+              <span>
                 <DatabaseIcon />
               </span>
-              <span class="text-base group-hover:text-white group-hover:font-semibold">
+              <span>
                 Database Management
               </span>
             </a>
           </li>
-          {/* Admin Management */}
-          <li class="group text-[#0b5555] border-b hover:bg-[#0b5555]">
+          <li class={active("/admin/management/admin")}>
             <a href="/admin/management/admin" class="flex flex-row gap-2 p-3">
-              <span class="group-hover:text-white">
+              <span>
                 <AdminIcon />
               </span>
-              <span class="text-base group-hover:text-white group-hover:font-semibold">
+              <span>
                 Admin Management
               </span>
             </a>
           </li>
-          {/* Settings */}
-          <li class="group text-[#0b5555] border-b hover:bg-[#0b5555]">
+          <li class={active("/admin/setting")}>
             <a href="/admin/setting" class="flex flex-row gap-2 p-3">
-              <span class="group-hover:text-white">
+              <span>
                 <SettingIcon />
               </span>
-              <span class="text-base group-hover:text-white group-hover:font-semibold">
+              <span>
                 Settings
               </span>
             </a>

@@ -4,8 +4,8 @@ import { Person3 } from "../../../../../assets/images";
 import User from "../../../../icons/User";
 
 const CircleProfile = () => {
-  const [isClick, setIsClick] = createSignal(true);
-  const [isOpen, setIsOpen] = createSignal(true);
+  const [isClick, setIsClick] = createSignal(false);
+  const [isOpen, setIsOpen] = createSignal(false);
 
   return (
     <div class="relative cursor-pointer">
