@@ -65,8 +65,8 @@ const Notification = () => {
   // Datas
   const [NotifDatas, setNotifDatas] = createSignal([...NotificationDatas]);
 
-  const [isClick, setIsClick] = createSignal(true);
-  const [isOpen, setIsOpen] = createSignal(true);
+  const [isClick, setIsClick] = createSignal(false);
+  const [isOpen, setIsOpen] = createSignal(false);
 
   // Load More
   const [limit, setLimit] = createSignal(3);

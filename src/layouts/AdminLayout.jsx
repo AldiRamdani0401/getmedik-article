@@ -29,7 +29,7 @@ const AdminLayout = (props) => {
   });
 
   return (
-    <div id="main-layout" class="flex flex-col h-screen overflow-hidden">
+    <div id="main-layout" class="bg-slate-100 flex flex-col h-screen overflow-hidden">
       <Header state={isScrolled} setOpenMsgApp={setOpenMsgApp} />
       <main class="relative flex flex-row h-[95%] lg:h-[95%] xl:h-full">
         {/* Sidebar */}
