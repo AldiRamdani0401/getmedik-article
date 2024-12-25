@@ -28,8 +28,8 @@ const SideBar = () => {
   };
 
   return (
-    <aside class="sticky top-0 flex flex-col xl:h-full justify-between w-[250px] bg-slate-100 select-none">
-      <div>
+    <aside class="sticky top-0 flex flex-col xl:h-full justify-between w-[250px] bg-slate-100 shadow-lg select-none">
+      <div class="bg-white">
         <h1 class="p-4 bg-[#0E8181] text-white text-xl font-semibold">
           <a href="/admin">Admin Panel</a>
         </h1>
