@@ -73,9 +73,10 @@ const unselected =
 
 // Select Box Component
 const SelectBox = (props) => {
-  console.log("scrollX", props.scrollState);
-  console.log("index", props.index);
-  console.log("selected delete mode", props.selectedDeleteModeState);
+  // console.log("props.articleId", props.articleId);
+  // console.log("scrollX", props.scrollState);
+  // console.log("index", props.index);
+  // console.log("selected delete mode", props.selectedDeleteModeState);
 
   return (
     <div class="absolute z-20 top-0 left-1 w-full">
@@ -93,7 +94,10 @@ const SelectBox = (props) => {
             class="px-2 py-[0.8px] bg-blue-800 rounded-md text-white"
             onClick={() =>
               props.setRenderInParent(
-                <DetailArticle setState={props.setRenderInParent} />
+                <DetailArticle
+                  setState={props.setRenderInParent}
+                  articleId={props.articleId}
+                />
               )
             }
           >
@@ -103,6 +107,7 @@ const SelectBox = (props) => {
             class="px-2 py-[0.8px] bg-yellow-600 rounded-md text-white border"
             onClick={() => {
               props.setSelectedDeleteMode((prev) => [...prev, props.index]);
+              props.setSelectedForDelete((prev) => [...prev, props.articleId]);
             }}
           >
             Select
@@ -130,12 +135,12 @@ const Rows = (props) => {
   // Signal
   const [openSelectBox, setOpenSelectBox] = createSignal(false);
   const [openSelectBoxIndex, setOpenSelectBoxIndex] = createSignal(null);
-  const [getScrollX, setScrollX] = createSignal(null);
+  // const [getScrollX, setScrollX] = createSignal(null);
 
-  createEffect(() => {
-    setScrollX(props.scrollState());
-    console.log(getScrollX());
-  });
+  // createEffect(() => {
+  //   setScrollX(props.scrollState());
+  //   // console.log(getScrollX());
+  // });
 
   return (
     <tr
@@ -178,10 +183,17 @@ const Rows = (props) => {
               props.setSelectedDeleteMode((prev) =>
                 prev.filter((index) => index !== props.index)
               );
+              props.setSelectedForDelete((prev) =>
+                prev.filter((id) => id !== props.data.article_id)
+              );
               setOpenSelectBox(false);
             } else {
               alert("selected");
               props.setSelectedDeleteMode((prev) => [...prev, props.index]);
+              props.setSelectedForDelete((prev) => [
+                ...prev,
+                props.data.article_id,
+              ]);
             }
           }}
         />
@@ -192,6 +204,7 @@ const Rows = (props) => {
           <SelectBox
             state={openSelectBox()}
             scrollState={props.scrollState()}
+            articleId={props.data.article_id}
             index={props.index}
             selectedDeleteModeState={props
               .selectedDeleteMode()
@@ -199,6 +212,7 @@ const Rows = (props) => {
             openSelectBoxIndex={openSelectBoxIndex}
             // Select
             setSelectedDeleteMode={props.setSelectedDeleteMode}
+            setSelectedForDelete={props.setSelectedForDelete}
             // cancel
             setSelected={props.setSelected}
             setOpenSelectBox={setOpenSelectBox}
@@ -208,8 +222,9 @@ const Rows = (props) => {
           />
         )}
       {/* No */}
+      {console.log("current page", props.page)}
       <td class="border text-center px-2 py-2 text-nowrap ">
-        {props.index + 1}
+        {props.index + 1 + (props.page - 1) * props.limit}
       </td>
       {/* Article ID */}
       <td class="border text-center px-2 py-2 text-nowrap ">
@@ -225,11 +240,11 @@ const Rows = (props) => {
       </td>
       {/* Doctor Verificator */}
       <td class="border text-center px-2 py-2 text-nowrap ">
-        {props.data.doctor_verificator}
+        {props.data.doctor_verificator.name}
       </td>
       {/* Admin Verificator */}
       <td class="border text-center px-2 py-2 text-nowrap ">
-        {props.data.admin_verificator}
+        {props.data.admin_verificator.name}
       </td>
       {/* Verification Status */}
       <td

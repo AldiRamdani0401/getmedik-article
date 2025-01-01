@@ -10,7 +10,7 @@ import { logoAppStore, logoGmDark, logoPlayStore } from "../../assets/images/ind
 
 const Footer = () => {
   return (
-    <footer class="flex flex-col gap-3 bg-[#464646] w-full">
+    <footer id="footer-general" class="flex flex-col gap-3 bg-[#464646] w-full">
       {/* Container 1 */}
       <div class="flex flex-col lg:flex-row gap-4 px-5 lg:px-16 xl:px-20 pt-8">
         <div class="flex justify-normal lg:justify-center mt-0 lg:mt-3 w-full lg:w-[650px]">

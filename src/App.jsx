@@ -27,7 +27,7 @@ const App = () => {
       <Route path="/" component={MainLayout}>
         <Route path="/" component={Home} />
         <Route path="/article" component={Article} />
-        <Route path="/article/detail" component={Detail} />
+        <Route path="/article/:articleId" component={Detail} />
         <Route path="/*" component={NotFound} />
       </Route>
       {/* Admin */}

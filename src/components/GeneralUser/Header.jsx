@@ -18,6 +18,7 @@ const Header = (props) => {
 
   return (
     <nav
+    id="nav-general"
       class={`bg-white w-full px-5 lg:px-16 py-5 fixed top-0 z-50 transition-all ${
         props.state() ? "border-b border-b-slate-100 shadow-sm" : ""
       }`}

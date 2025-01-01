@@ -55,10 +55,10 @@ const AdminLayout = (props) => {
               {props.children}
             </div>
             {/* Render In Parent */}
-            {/* {renderInParent() && (
+            {renderInParent() && (
               renderInParent()
-            )} */}
-            <DetailArticle/>
+            )}
+            {/* <DetailArticle/> */}
           </RenderInParentProvider>
         </ContentHeaderProvider>
         {/* Message App */}
