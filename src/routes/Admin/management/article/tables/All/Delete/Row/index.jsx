@@ -1,9 +1,12 @@
-import { createEffect, createSignal, onMount } from "solid-js";
+import { createSignal } from "solid-js";
 
 import DetailArticle from "../../../../detail";
 
 // Contexts
 import { useRenderInParent } from "../../../../../../../../utils/context/RenderInParent";
+
+// Handlers
+import H_Article_Format from "../../../../../../../../utils/handlers/format/H_Arrticle_Format";
 
 // Date Format
 function H_Format_Date(dateString) {
@@ -52,18 +55,6 @@ function H_Format_Date(dateString) {
   return `${daysOfWeek[dayOfWeek]}, ${day} ${monthNames[month]} ${year} ${formattedTime}`;
 }
 
-// Verification Status
-function H_Format_Status(value, comparator) {
-  return comparator[value];
-}
-
-const style = {
-  1: "text-green-500",
-  2: "text-yellow-500",
-  3: "text-red-500",
-  4: "text-blue-700",
-};
-
 // Styles
 const selected =
   "group text-sm bg-red-200 hover:border-y-2 hover:border-red-500 cursor-pointer";
@@ -73,11 +64,6 @@ const unselected =
 
 // Select Box Component
 const SelectBox = (props) => {
-  // console.log("props.articleId", props.articleId);
-  // console.log("scrollX", props.scrollState);
-  // console.log("index", props.index);
-  // console.log("selected delete mode", props.selectedDeleteModeState);
-
   return (
     <div class="absolute z-20 top-0 left-1 w-full">
       <div
@@ -132,9 +118,39 @@ const Rows = (props) => {
   // Context
   const [_, setRenderInParent] = useRenderInParent();
 
-  // Signal
+  // Signals
   const [openSelectBox, setOpenSelectBox] = createSignal(false);
   const [openSelectBoxIndex, setOpenSelectBoxIndex] = createSignal(null);
+
+  const [articleId, setArticleId] = createSignal(null);
+  const [titleArticle, setTitleArticle] = createSignal(null);
+  const [author, setAuthor] = createSignal(null);
+  const [doctorVerificator, setDoctorVerificator] = createSignal(null);
+  const [adminVerificator, setAdminVerificator] = createSignal(null);
+  const [statusVerification, setStatusVerification] = createSignal(null);
+  const [created, setCreated] = createSignal(null);
+  const [updated, setUpdated] = createSignal(null);
+  const [published, setPublished] = createSignal(null);
+  const [viewer, setViewer] = createSignal(null);
+  const [shared, setShared] = createSignal(null);
+  const [articleStatus, setArticleStatus] = createSignal(null);
+
+  // == SET
+  setArticleId(props.data?.article_id);
+  setTitleArticle(props.data?.title_article);
+  setAuthor(props.data?.author);
+  setDoctorVerificator(props.data?.doctor_verificator?.name);
+  setAdminVerificator(props.data?.admin_verificator?.name);
+  setStatusVerification(
+    H_Article_Format.status_verification(props.data?.verification_status)
+  );
+  setCreated(H_Format_Date(props.data?.created));
+  setUpdated(H_Format_Date(props.data?.updated));
+  setPublished(H_Format_Date(props.data?.published));
+  setViewer(props.data?.viewer);
+  setShared(props.data?.shared);
+  setArticleStatus(H_Article_Format.status_article(props.data?.article_status));
+
   // const [getScrollX, setScrollX] = createSignal(null);
 
   // createEffect(() => {
@@ -153,16 +169,6 @@ const Rows = (props) => {
         if (props.index == props.selected()) {
           setOpenSelectBoxIndex(props.index);
           setOpenSelectBox(true);
-          // Function 1
-          // if (click() == 1) {
-          //   console.log("detail");
-          //   setRenderInParent(<DetailArticle setState={setRenderInParent}/>);
-          // }
-          // Function 2
-          // if (click() == 2) {
-          //   alert("select delete");
-          //   props.setSelectedDeleteMode((prev) => [...prev, props.index]);
-          // }
         } else {
           props.setSelected(props.index);
           setOpenSelectBox(false);
@@ -170,9 +176,9 @@ const Rows = (props) => {
         }
       }}
     >
-      {/* {console.log('scrollX', props.scrollState())} */}
       {/* Update & Delete Mode */}
       <td class="border flex items-center p-[10.2px]">
+        {/* Checkbox */}
         <input
           type="checkbox"
           id=""
@@ -222,71 +228,53 @@ const Rows = (props) => {
           />
         )}
       {/* No */}
-      {console.log("current page", props.page)}
+      {/* {console.log("current page", props.page)} */}
       <td class="border text-center px-2 py-2 text-nowrap ">
         {props.index + 1 + (props.page - 1) * props.limit}
       </td>
       {/* Article ID */}
-      <td class="border text-center px-2 py-2 text-nowrap ">
-        {props.data.article_id}
-      </td>
+      <td class="border text-center px-2 py-2 text-nowrap ">{articleId()}</td>
       {/* Title Article */}
       <td class="border text-center px-2 py-2 text-nowrap ">
-        {props.data.title_article}
+        {titleArticle()}
       </td>
       {/* Author */}
-      <td class="border text-center px-2 py-2 text-nowrap ">
-        {props.data.author}
-      </td>
+      <td class="border text-center px-2 py-2 text-nowrap ">{author()}</td>
       {/* Doctor Verificator */}
       <td class="border text-center px-2 py-2 text-nowrap ">
-        {props.data.doctor_verificator.name}
+        {doctorVerificator()}
       </td>
       {/* Admin Verificator */}
       <td class="border text-center px-2 py-2 text-nowrap ">
-        {props.data.admin_verificator.name}
+        {adminVerificator()}
       </td>
       {/* Verification Status */}
       <td
-        class={`${
-          style[props.data.verification_status]
-        } border font-semibold text-center px-2 text-nowrap `}
+        class={
+          statusVerification().color +
+          ` border font-semibold text-center px-2 text-nowrap`
+        }
       >
-        {H_Format_Status(props.data.verification_status, {
-          1: "ACCEPTED",
-          2: "PENDING",
-          3: "REJECTED",
-          4: "REVISION",
-        })}
+        {statusVerification().status}
       </td>
       {/* Created */}
-      <td class="border text-center px-2 text-nowrap ">
-        {H_Format_Date(props.data.created)}
-      </td>
+      <td class="border text-center px-2 text-nowrap ">{created()}</td>
       {/* Updated */}
-      <td class="border text-center px-2 text-nowrap ">
-        {H_Format_Date(props.data.updated)}
-      </td>
+      <td class="border text-center px-2 text-nowrap ">{updated()}</td>
       {/* Published */}
-      <td class="border text-center px-2 text-nowrap ">
-        {H_Format_Date(props.data.published)}
-      </td>
+      <td class="border text-center px-2 text-nowrap ">{published()}</td>
       {/* Viewer */}
-      <td class="border text-center px-2 text-nowrap ">{props.data.viewer}</td>
+      <td class="border text-center px-2 text-nowrap ">{viewer()}</td>
       {/* Shared */}
-      <td class="border text-center px-2 text-nowrap ">{props.data.shared}</td>
+      <td class="border text-center px-2 text-nowrap ">{shared()}</td>
       {/* Article Status */}
       <td
-        class={`${
-          style[props.data.article_status]
-        } border font-semibold text-center px-2 text-nowrap `}
+        class={
+          articleStatus().color +
+          ` border font-semibold text-center px-2 text-nowrap`
+        }
       >
-        {H_Format_Status(props.data.article_status, {
-          1: "PUBLISHED",
-          2: "UNPUBLISHED",
-          3: "BANNED",
-          4: "DELETED",
-        })}
+        {articleStatus().status}
       </td>
     </tr>
   );

@@ -31,7 +31,7 @@ const DetailArticle = (props) => {
   setStatusVerification(
     H_Article_Format.status_verification(article.verification_status)
   );
-  setStatusArticle(article.article_status);
+  setStatusArticle(H_Article_Format.status_article(article.article_status));
   setViewer(article.viewer);
   setShared(article.shared);
 
@@ -137,8 +137,8 @@ const DetailArticle = (props) => {
                   <td class="border-slate-400 border px-2 font-semibold bg-teal-600 text-white">
                     Status Verifikasi
                   </td>
-                  <td class="border-slate-400 bg-white border px-2">
-                    {statusVerfication()}
+                  <td class={`border-slate-400 bg-white border px-2 ${statusVerfication().color}`}>
+                    {statusVerfication().status}
                   </td>
                 </tr>
                 {/* === Article Status === */}
@@ -146,8 +146,8 @@ const DetailArticle = (props) => {
                   <td class="border-slate-400 border px-2 font-semibold bg-teal-600 text-white">
                     Status Artikel
                   </td>
-                  <td class="border-slate-400 bg-white border px-2">
-                    {H_Article_Format.status_article(statusArticle())}
+                  <td class={`border-slate-400 bg-white border px-2 ${statusArticle().color}`}>
+                    {statusArticle().status}
                   </td>
                 </tr>
                 {/* === Viewer === */}

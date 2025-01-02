@@ -46,21 +46,27 @@ const H_Article_Format = {
   },
   status_verification: (value) => {
     const status = {
-      1: 'ACCEPTED',
-      2: ''
-    }
+      1: { status: "ACCEPTED", color: "text-green-600 font-semibold" },
+      2: { status: "PENDING", color: "text-yellow-600 font-semibold" },
+      3: { status: "REJECTED", color: "text-red-600 font-semibold" },
+      4: { status: "REVISION", color: "text-blue-600 font-semibold" },
+    };
     return status[value] ?? false;
   },
   status_article: (value) => {
     const status = {
-      1: 'PUBLISHED',
-      2: ''
-    }
+      1: { status: "PUBLISHED", color: "text-green-600 font-semibold" },
+      2: { status: "UNPUBLISHED", color: "text-yellow-600 font-semibold" },
+      3: { status: "BANNED", color: "text-red-600 font-semibold" },
+      4: { status: "DELETED", color: "text-gray-600 font-semibold" },
+    };
     return status[value] ?? false;
   },
   object_key: (value) => {
-    return value.replace(/_/g, ' ').replace(/\b\w/g, char => char.toUpperCase());
-  }
-}
+    return value
+      .replace(/_/g, " ")
+      .replace(/\b\w/g, (char) => char.toUpperCase());
+  },
+};
 
 export default H_Article_Format;

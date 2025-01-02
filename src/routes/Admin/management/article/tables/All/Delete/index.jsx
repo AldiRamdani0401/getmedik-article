@@ -25,9 +25,38 @@ function H_Pagination(datas, limit, index, setTotal, filter) {
         }
         return 0;
       });
+    } else if (
+      filter.filter === "created" ||
+      filter.filter === "updated" ||
+      filter.filter === "published"
+    ) {
+      filteredData = filteredData.filter(
+        (data) => data[filter.filter] === filter.value
+      );
+      setTotal(filteredData.length);
     } else if (filter.filter === "doctor_verificator") {
       filteredData = filteredData.filter(
-        (data) => data.doctor_verificator === filter.value
+        (data) => data.doctor_verificator.name === filter.value
+      );
+      setTotal(filteredData.length);
+    } else if (filter.filter === "author") {
+      filteredData = filteredData.filter(
+        (data) => data.author === filter.value
+      );
+      setTotal(filteredData.length);
+    } else if (filter.filter === "article_status") {
+      filteredData = filteredData.filter(
+        (data) => data.article_status === parseInt(filter.value)
+      );
+      setTotal(filteredData.length);
+    } else if (filter.filter === "author") {
+      filteredData = filteredData.filter(
+        (data) => data.author === filter.value
+      );
+      setTotal(filteredData.length);
+    } else if (filter.filter === "verification_status") {
+      filteredData = filteredData.filter(
+        (data) => data.verification_status === parseInt(filter.value)
       );
       setTotal(filteredData.length);
     }
@@ -188,11 +217,13 @@ const DeleteTable = (props) => {
                   -- select filter --
                 </option>
                 {Object.keys(datas[0]).map((key) => {
-                  return (
-                    <option value={key}>
-                      {H_Article_Format.object_key(key)}
-                    </option>
-                  );
+                  if (key != "content") {
+                    return (
+                      <option value={key}>
+                        {H_Article_Format.object_key(key)}
+                      </option>
+                    );
+                  }
                 })}
               </select>
               {/* Select Filter Value */}
@@ -214,12 +245,101 @@ const DeleteTable = (props) => {
                   <option class="" value="default" defaultValue>
                     -- select filter value --
                   </option>
-                  <option value="A-Z">A - Z</option>
-                  <option value="Z-A">Z - A</option>
+                  {/* Default Option */}
+                  {filter().filter === "created" ||
+                  filter().filter === "updated" ||
+                  filter().filter === "published" ||
+                  filter().filter === "article_status" ||
+                  filter().filter === "verification_status" ? (
+                    <></>
+                  ) : (
+                    <>
+                      <option value="A-Z">A - Z</option>
+                      <option value="Z-A">Z - A</option>
+                    </>
+                  )}
+                  {/* Date : Created, Updated, Published */}
+                  {(filter().filter === "created" ||
+                    filter().filter === "updated" ||
+                    filter().filter === "published") && (
+                    <>
+                      <option value="Z-A">Latest</option>
+                      <option value="A-Z">Oldest</option>
+                      {/* {[
+                        ...new Set(datas.map((data) => data[filter().filter])),
+                      ].map((value) => (
+                        <option value={value}>{value}</option>
+                      ))} */}
+                    </>
+                  )}
+                  {/* Doctor Verificator */}
                   {filter().filter === "doctor_verificator" &&
                     [
-                      ...new Set(datas.map((data) => data.doctor_verificator)),
+                      ...new Set(
+                        datas.map((data) => data.doctor_verificator.name)
+                      ),
                     ].map((value) => <option value={value}>{value}</option>)}
+                  {/* Author */}
+                  {filter().filter === "author" &&
+                    [...new Set(datas.map((data) => data.author))].map(
+                      (value) => <option value={value}>{value}</option>
+                    )}
+                  {/* Admin Verificator */}
+                  {filter().filter === "admin_verificator" &&
+                    [
+                      ...new Set(
+                        datas.map((data) => data.admin_verificator.name)
+                      ),
+                    ].map((value) => <option value={value}>{value}</option>)}
+                  {/* Author */}
+                  {filter().filter === "author" &&
+                    [...new Set(datas.map((data) => data.author))].map(
+                      (value) => <option value={value}>{value}</option>
+                    )}
+                  {/* Article Status */}
+                  {filter().filter === "article_status" && (
+                    <>
+                      <option class="font-medium text-green-600" value="1">
+                        Acception
+                      </option>
+                      <option class="font-medium text-yellow-600" value="2">
+                        Pending
+                      </option>
+                      <option class="font-medium text-red-600" value="3">
+                        Rejected
+                      </option>
+                      <option class="font-medium text-blue-600" value="4">
+                        Revision
+                      </option>
+                      {/* {[
+                        ...new Set(datas.map((data) => data[filter().filter])),
+                      ].map((value) => (
+                        <option value={value}>{value}</option>
+                      ))} */}
+                    </>
+                  )}
+                  {/* Verification Status */}
+                  {filter().filter === "verification_status" && (
+                    <>
+                      <option class="font-medium text-green-600" value="1">
+                        Published
+                      </option>
+                      <option class="font-medium text-yellow-600" value="2">
+                        Unpublished
+                      </option>
+                      <option class="font-medium text-red-600" value="3">
+                        Banned
+                      </option>
+                      <option class="font-medium text-gray-600" value="4">
+                        Delete
+                      </option>
+                      {/* {[
+                        ...new Set(datas.map((data) => data[filter().filter])),
+                      ].map((value) => (
+                        <option value={value}>{value}</option>
+                      ))} */}
+                    </>
+                  )}
                 </select>
               )}
               {/* Reset */}
