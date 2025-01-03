@@ -91,16 +91,50 @@ function H_Pagination(datas, limit, index, setTotal, filter, search) {
       search.keyword = articleStatus[search.keyword.toUpperCase()];
     }
 
-    filteredData = filteredData.filter((data) =>
-      String(data[search.mode])
-        .toLowerCase()
-        .includes(
-          typeof search.keyword === "number"
-            ? search.keyword
-            : search.keyword.toLowerCase()
-        )
-    );
+    filteredData = filteredData.filter((data) => {
+      const keyword = String(search.keyword).toLowerCase();
+      if (search.mode === "doctor_verificator") {
+        const doctorName = String(data.doctor_verificator.name).toLowerCase();
+        return doctorName.includes(keyword);
+      } else if (search.mode === "admin_verificator") {
+        const adminName = String(data.admin_verificator.name).toLowerCase();
+        return adminName.includes(keyword);
+      } else {
+        const value = String(data[search.mode]).toLowerCase();
+        return value.includes(keyword);
+      }
+    });
+
+    console.log(filteredData);
+    // filteredData = filteredData.filter((data) => {
+    //   const keyword = String(search.keyword).toLowerCase();
+    //   const values = Object.values(data).flatMap((value) => {
+    //     if (typeof value === "object" && value !== null) {
+    //       console.log(value);
+    //       return Object.values(value).map((v) => {
+    //         console.log(v);
+    //         return String(v).toLowerCase();
+    //       });
+    //     }
+    //     return String(value).toLowerCase();
+    //   });
+    //   console.log(values);
+    //   return values.some((value) => value.includes(keyword));
+    // });
+
     setTotal(filteredData.length);
+  } else if (search.mode == null && search.keyword !== null) {
+    // All
+    filteredData = filteredData.filter((data) => {
+      const keyword = String(search.keyword).toLowerCase();
+      const values = Object.values(data).flatMap((value) => {
+        if (typeof value === "object" && value !== null) {
+          return Object.values(value).map((v) => String(v).toLowerCase());
+        }
+        return String(value).toLowerCase();
+      });
+      return values.some((value) => value.includes(keyword));
+    });
   }
 
   const paginatedData = filteredData.slice(index * limit, (index + 1) * limit);
@@ -129,8 +163,11 @@ const DeleteTable = (props) => {
   const [totalData, setTotalData] = createSignal(null);
   const [totalPage, setTotalPage] = createSignal(null);
 
+  // ** Filter **
   const [filter, setFilter] = createSignal({ filter: null, value: null });
+  // ** Search **
   const [search, setSearch] = createSignal({ mode: null, keyword: null });
+  const [placeholder, setPlaceholder] = createSignal("Search all...");
 
   // const [click, setClick] = createSignal(0);
 
@@ -445,6 +482,9 @@ const DeleteTable = (props) => {
                 ...prev,
                 mode: e.target.value,
               }));
+              setPlaceholder(
+                `Search by ${H_Article_Format.object_key(e.target.value)} ..`
+              );
             }}
           >
             <option class="" value="default" defaultValue>
@@ -465,19 +505,28 @@ const DeleteTable = (props) => {
               id="search-input"
               type="text"
               class="py-0 border-slate-200"
+              placeholder={placeholder()}
+              onkeyup={(e) => {
+                setSearch((prev) => ({ ...prev, keyword: null }));
+                setTimeout(() => {
+                  setSearch((prev) => ({ ...prev, keyword: e.target.value }));
+                }, 1000);
+              }}
             />
             <button
               class="px-2 bg-blue-900 text-white border border-blue-900 rounded-r-md"
               onclick={() => {
                 const element = document.getElementById("search-input");
-                setSearch((prev) => ({ ...prev, keyword: element.value }));
+                if (element.value !== "") {
+                  setSearch((prev) => ({ ...prev, keyword: element.value }));
+                }
                 console.log(search());
               }}
             >
               <Search />
             </button>
             {/* Reset : Search */}
-            {search().mode !== null && (
+            {(search().mode !== null || search().keyword !== null) && (
               <button
                 class="bg-red-600 hover:bg-red-500 text-white rounded-full px-2 flex flex-row justify-center font-medium border border-red-700 shadow-xl ml-1"
                 onClick={() => {
@@ -490,6 +539,7 @@ const DeleteTable = (props) => {
                     mode: null,
                     keyword: null,
                   }));
+                  setPlaceholder("Search all...");
                 }}
               >
                 {"X"}
@@ -602,7 +652,7 @@ const DeleteTable = (props) => {
           {/* Next */}
           <button
             class="border rounded-md px-2 bg-red-700 text-white font-semibold disabled:bg-gray-500"
-            disabled={currentPage() == totalPage()}
+            disabled={currentPage() == totalPage() || totalPage() === 0}
             onClick={() => {
               console.log("next");
               setIndex((prev) => currentPage() < totalPage() && prev + 1);
@@ -612,7 +662,7 @@ const DeleteTable = (props) => {
           </button>
           <button
             class="border rounded-md px-2 bg-red-700 text-white font-semibold disabled:bg-gray-500"
-            disabled={currentPage() == totalPage()}
+            disabled={currentPage() == totalPage() || totalPage() === 0}
             onClick={() => {
               console.log("last");
               // set last index
