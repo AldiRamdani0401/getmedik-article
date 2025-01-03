@@ -10,7 +10,7 @@ const MessageApp = (props) => {
   return (
     <aside
       class={`${
-        props.open() ? "absolute" : "hidden"
+        props.open() ? "absolute z-40" : "hidden"
       } top-12 right-0 flex flex-col md:h-[95%] lg:h-[90%]  xl:h-[90%] justify-between w-[450px] rounded-l-xl shadow-xl bg-[#0E8181] border border-[#0E8181] select-none`}
     >
       <h1 class="px-4 py-2 bg-[#0E8181] text-white text-xl font-semibold rounded-tl-xl">

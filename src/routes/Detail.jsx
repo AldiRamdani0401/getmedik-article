@@ -1,8 +1,16 @@
+import { useParams } from "@solidjs/router";
+
 import { articleBanner, Person1, Person2 } from "../assets/images";
 import CopyIcon from "../components/icons/CopyIcon";
 import FacebookIcon from "../components/icons/social-media/FacebookIcon";
 import TwitterIcon from "../components/icons/social-media/TwitterIcon";
 
+// Services
+import S_Article from "../services/examples/S_Articles";
+import H_Article_Format from "../utils/handlers/format/H_Arrticle_Format";
+import { createSignal } from "solid-js";
+
+// Handler: Recommendation Article
 function renderArticle() {
   let limit = 3;
 
@@ -25,27 +33,36 @@ function renderArticle() {
 }
 
 function Detail() {
+  const [htmlString, setHtmlString] = createSignal(null);
+
+  // Get URL Params
+  const params = useParams();
+  const article = S_Article.getArticle(params.articleId);
+  if (article?.content) {
+    setHtmlString(article.content);
+  }
+
   return (
     <>
       <div class="px-8 py-1 lg:px-20 bg-gray-50">
-        <p class="text-sm font-medium">Beranda / Artikel / Olah Raga</p>
+        <p class="text-sm font-medium">
+          Beranda / Artikel / {article.category}
+        </p>
       </div>
       <div className="flex flex-col gap-8 px-8 py-5 lg:px-20">
         {/* Badge Category */}
         <div class="flex flex-row gap-2">
           <button class="block w-fit text-xs font-bold bg-green-600 px-2 py-0 text-white rounded-xl">
-            Olah Raga
+            {article.category}
           </button>
           <button class="block w-fit text-xs font-semibold bg-gray-100 px-2 py-0 rounded-xl">
-            Olah Raga
+            {article.sub_category}
           </button>
         </div>
         {/* Container Content Article */}
         <div class="flex flex-col gap-5">
           <h1 class="text-2xl lg:text-3xl font-bold">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Possimus
-            ullam voluptatem, doloribus iste animi perspiciatis obcaecati
-            cupiditate accusantium dolor porro.
+            {article.title_article}
           </h1>
 
           <img
@@ -60,22 +77,28 @@ function Detail() {
               {/* Created By */}
               <div class="">
                 <p class="text-base lg:text-sm">Dibuat oleh</p>
-                <p class="font-medium text-lg md:text-base lg:text-base">Asep</p>
+                <p class="font-medium text-lg md:text-base lg:text-base">
+                  {article.author}
+                </p>
               </div>
               {/* Verified By */}
               <div class="">
                 <p class="text-base lg:text-sm">Ditinjau oleh</p>
-                <p class="font-medium text-lg md:text-base lg:text-base">Dr. Asep</p>
+                <p class="font-medium text-lg md:text-base lg:text-base">
+                  {article.doctor_verificator.name}
+                </p>
               </div>
               {/* Published On */}
               <div class="">
                 <p class="text-base lg:text-sm">Waktu Publikasi</p>
-                <p class="font-medium text-lg md:text-base lg:text-base">16 Juli 2024 06.00 WIB</p>
+                <p class="font-medium text-lg md:text-base lg:text-base">
+                  {H_Article_Format.date(article.published)}
+                </p>
               </div>
             </div>
             {/* Share Articles */}
             <div class="flex flex-row gap-5 md:gap-1 lg:gap-5 h-fit justify-center">
-              {/* Created By */}
+              {/* Copy */}
               <button
                 class="flex flex-row gap-1 items-center bg-[#0E8181] font-semibold rounded-lg text-white text-base md:text-sm lg:text-base p-2"
                 href=""
@@ -83,14 +106,14 @@ function Detail() {
                 <CopyIcon />
                 <span>Copy Link</span>
               </button>
-              {/* Verified By */}
+              {/* Twitter */}
               <a
                 class="flex items-center bg-[#0E8181] font-semibold rounded-lg text-white text-base md:text-sm lg:text-base p-2"
                 href=""
               >
                 <TwitterIcon />
               </a>
-              {/* Published On */}
+              {/* Facebook */}
               <a
                 class="flex items-center bg-[#0E8181] font-semibold rounded-lg text-white p-2"
                 href=""
@@ -104,21 +127,9 @@ function Detail() {
             {/* Content Article */}
             <div class="w-full">
               {/* Text */}
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Repellat iste soluta sit voluptatibus animi ipsum labore
-                reprehenderit laboriosam nobis. Sunt consequuntur velit illum
-                mollitia perferendis neque, harum praesentium iste ex inventore
-                debitis officia deserunt aspernatur quos eveniet. Eligendi esse
-                hic vero vitae reprehenderit pariatur impedit nesciunt quisquam.
-                Quaerat dolorem, sit voluptas, necessitatibus totam alias atque,
-                excepturi officia fugiat perspiciatis unde illo quos ipsum
-                doloremque ipsam nostrum nemo natus veritatis aperiam omnis quis
-                beatae voluptates? Molestiae cumque, aut fugit illo ea ex animi
-                doloremque! Corrupti porro blanditiis deleniti velit esse, a
-                fugit molestiae quod, provident temporibus saepe non quasi, rem
-                accusantium.
-              </p>
+              <div innerHTML={htmlString()}>
+                {/* Content Article */}
+              </div>
               {/* Tag */}
               <div class="flex flex-wrap justify-center md:justify-normal lg:justify-normal gap-2 mt-10 w-full">
                 <button class="block w-fit text-xs font-semibold bg-gray-100 px-2 py-0 rounded-xl">
@@ -192,8 +203,12 @@ function Detail() {
         {/* Container: List Artiles Recommended */}
         <div class="flex flex-col gap-5">
           <div class="flex flex-col justify-normal md:justify-between md:flex-row lg:flex-row md:items-center lg:items-center gap-2">
-            <h1 class="text-center text-2xl font-bold lg:text-left lg:text-xl lg:font-semibold">Artikel Kesehatan lainnya</h1>
-            <a href="/article" class="text-[#0E8181] font-semibold text-right">Lihat semua artikel</a>
+            <h1 class="text-center text-2xl font-bold lg:text-left lg:text-xl lg:font-semibold">
+              Artikel Kesehatan lainnya
+            </h1>
+            <a href="/article" class="text-[#0E8181] font-semibold text-right">
+              Lihat semua artikel
+            </a>
           </div>
           <div class="flex flex-col md:flex-row lg:flex-row">
             {renderArticle()}

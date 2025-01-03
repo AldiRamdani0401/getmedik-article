@@ -1,24 +1,10 @@
 const article_management =
   [
     {
-        "article_id": "000",
-        "title_article": "Kesehatan mental 0",
-        "creator": "Asep 0",
-        "doctor_verificator": "Dr. Budi",
-        "admin_verificator": "Caca",
-        "verification_status": 1,
-        "created": "2024-07-24 13:53:47",
-        "updated": "2024-07-24 13:53:47",
-        "published": "2024-07-24 13:53:47",
-        "viewer": 1,
-        "shared": 1,
-        "article_status": 1
-    },
-    {
         "article_id": "001",
         "title_article": "Kesehatan mental 1",
-        "creator": "Asep 1",
-        "doctor_verificator": "Dr. Budi",
+        "author": "Asep 1",
+        "doctor_verificator": "Dr. Aldi",
         "admin_verificator": "Caca",
         "verification_status": 4,
         "created": "2024-07-24 13:53:47",
@@ -31,8 +17,8 @@ const article_management =
     {
         "article_id": "002",
         "title_article": "Kesehatan mental 2",
-        "creator": "Asep 2",
-        "doctor_verificator": "Dr. Budi",
+        "author": "Asep 2",
+        "doctor_verificator": "Dr. Aldi",
         "admin_verificator": "Caca",
         "verification_status": 2,
         "created": "2024-07-24 13:53:47",
@@ -45,7 +31,7 @@ const article_management =
     {
         "article_id": "003",
         "title_article": "Kesehatan mental 3",
-        "creator": "Asep 3",
+        "author": "Asep 3",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 3,
@@ -59,7 +45,7 @@ const article_management =
     {
         "article_id": "004",
         "title_article": "Kesehatan mental 4",
-        "creator": "Asep 4",
+        "author": "Asep 4",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 3,
@@ -73,7 +59,7 @@ const article_management =
     {
         "article_id": "005",
         "title_article": "Kesehatan mental 5",
-        "creator": "Asep 5",
+        "author": "Asep 5",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -87,7 +73,7 @@ const article_management =
     {
         "article_id": "006",
         "title_article": "Kesehatan mental 6",
-        "creator": "Asep 6",
+        "author": "Asep 6",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -101,7 +87,7 @@ const article_management =
     {
         "article_id": "007",
         "title_article": "Kesehatan mental 7",
-        "creator": "Asep 7",
+        "author": "Asep 7",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -115,7 +101,7 @@ const article_management =
     {
         "article_id": "008",
         "title_article": "Kesehatan mental 8",
-        "creator": "Asep 8",
+        "author": "Asep 8",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -129,7 +115,7 @@ const article_management =
     {
         "article_id": "009",
         "title_article": "Kesehatan mental 9",
-        "creator": "Asep 9",
+        "author": "Asep 9",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -143,7 +129,7 @@ const article_management =
     {
         "article_id": "010",
         "title_article": "Kesehatan mental 10",
-        "creator": "Asep 10",
+        "author": "Asep 10",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -157,7 +143,7 @@ const article_management =
     {
         "article_id": "011",
         "title_article": "Kesehatan mental 11",
-        "creator": "Asep 11",
+        "author": "Asep 11",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -171,7 +157,7 @@ const article_management =
     {
         "article_id": "012",
         "title_article": "Kesehatan mental 12",
-        "creator": "Asep 12",
+        "author": "Asep 12",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -185,7 +171,7 @@ const article_management =
     {
         "article_id": "013",
         "title_article": "Kesehatan mental 13",
-        "creator": "Asep 13",
+        "author": "Asep 13",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -199,7 +185,7 @@ const article_management =
     {
         "article_id": "014",
         "title_article": "Kesehatan mental 14",
-        "creator": "Asep 14",
+        "author": "Asep 14",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -213,7 +199,7 @@ const article_management =
     {
         "article_id": "015",
         "title_article": "Kesehatan mental 15",
-        "creator": "Asep 15",
+        "author": "Asep 15",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -227,7 +213,7 @@ const article_management =
     {
         "article_id": "016",
         "title_article": "Kesehatan mental 16",
-        "creator": "Asep 16",
+        "author": "Asep 16",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -241,7 +227,7 @@ const article_management =
     {
         "article_id": "017",
         "title_article": "Kesehatan mental 17",
-        "creator": "Asep 17",
+        "author": "Asep 17",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -255,7 +241,7 @@ const article_management =
     {
         "article_id": "018",
         "title_article": "Kesehatan mental 18",
-        "creator": "Asep 18",
+        "author": "Asep 18",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -269,7 +255,7 @@ const article_management =
     {
         "article_id": "019",
         "title_article": "Kesehatan mental 19",
-        "creator": "Asep 19",
+        "author": "Asep 19",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -283,7 +269,7 @@ const article_management =
     {
         "article_id": "020",
         "title_article": "Kesehatan mental 20",
-        "creator": "Asep 20",
+        "author": "Asep 20",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -297,7 +283,7 @@ const article_management =
     {
         "article_id": "021",
         "title_article": "Kesehatan mental 21",
-        "creator": "Asep 21",
+        "author": "Asep 21",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -311,7 +297,7 @@ const article_management =
     {
         "article_id": "022",
         "title_article": "Kesehatan mental 22",
-        "creator": "Asep 22",
+        "author": "Asep 22",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -325,7 +311,7 @@ const article_management =
     {
         "article_id": "023",
         "title_article": "Kesehatan mental 23",
-        "creator": "Asep 23",
+        "author": "Asep 23",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -339,7 +325,7 @@ const article_management =
     {
         "article_id": "024",
         "title_article": "Kesehatan mental 24",
-        "creator": "Asep 24",
+        "author": "Asep 24",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -353,7 +339,7 @@ const article_management =
     {
         "article_id": "025",
         "title_article": "Kesehatan mental 25",
-        "creator": "Asep 25",
+        "author": "Asep 25",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -367,7 +353,7 @@ const article_management =
     {
         "article_id": "026",
         "title_article": "Kesehatan mental 26",
-        "creator": "Asep 26",
+        "author": "Asep 26",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -381,7 +367,7 @@ const article_management =
     {
         "article_id": "027",
         "title_article": "Kesehatan mental 27",
-        "creator": "Asep 27",
+        "author": "Asep 27",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -395,7 +381,7 @@ const article_management =
     {
         "article_id": "028",
         "title_article": "Kesehatan mental 28",
-        "creator": "Asep 28",
+        "author": "Asep 28",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -409,7 +395,7 @@ const article_management =
     {
         "article_id": "029",
         "title_article": "Kesehatan mental 29",
-        "creator": "Asep 29",
+        "author": "Asep 29",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -423,7 +409,7 @@ const article_management =
     {
         "article_id": "030",
         "title_article": "Kesehatan mental 30",
-        "creator": "Asep 30",
+        "author": "Asep 30",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -437,7 +423,7 @@ const article_management =
     {
         "article_id": "031",
         "title_article": "Kesehatan mental 31",
-        "creator": "Asep 31",
+        "author": "Asep 31",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -451,7 +437,7 @@ const article_management =
     {
         "article_id": "032",
         "title_article": "Kesehatan mental 32",
-        "creator": "Asep 32",
+        "author": "Asep 32",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -465,7 +451,7 @@ const article_management =
     {
         "article_id": "033",
         "title_article": "Kesehatan mental 33",
-        "creator": "Asep 33",
+        "author": "Asep 33",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -479,7 +465,7 @@ const article_management =
     {
         "article_id": "034",
         "title_article": "Kesehatan mental 34",
-        "creator": "Asep 34",
+        "author": "Asep 34",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -493,7 +479,7 @@ const article_management =
     {
         "article_id": "035",
         "title_article": "Kesehatan mental 35",
-        "creator": "Asep 35",
+        "author": "Asep 35",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -507,7 +493,7 @@ const article_management =
     {
         "article_id": "036",
         "title_article": "Kesehatan mental 36",
-        "creator": "Asep 36",
+        "author": "Asep 36",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -521,7 +507,7 @@ const article_management =
     {
         "article_id": "037",
         "title_article": "Kesehatan mental 37",
-        "creator": "Asep 37",
+        "author": "Asep 37",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -535,7 +521,7 @@ const article_management =
     {
         "article_id": "038",
         "title_article": "Kesehatan mental 38",
-        "creator": "Asep 38",
+        "author": "Asep 38",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -549,7 +535,7 @@ const article_management =
     {
         "article_id": "039",
         "title_article": "Kesehatan mental 39",
-        "creator": "Asep 39",
+        "author": "Asep 39",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -563,7 +549,7 @@ const article_management =
     {
         "article_id": "040",
         "title_article": "Kesehatan mental 40",
-        "creator": "Asep 40",
+        "author": "Asep 40",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -577,7 +563,7 @@ const article_management =
     {
         "article_id": "041",
         "title_article": "Kesehatan mental 41",
-        "creator": "Asep 41",
+        "author": "Asep 41",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -591,7 +577,7 @@ const article_management =
     {
         "article_id": "042",
         "title_article": "Kesehatan mental 42",
-        "creator": "Asep 42",
+        "author": "Asep 42",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -605,7 +591,7 @@ const article_management =
     {
         "article_id": "043",
         "title_article": "Kesehatan mental 43",
-        "creator": "Asep 43",
+        "author": "Asep 43",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -619,7 +605,7 @@ const article_management =
     {
         "article_id": "044",
         "title_article": "Kesehatan mental 44",
-        "creator": "Asep 44",
+        "author": "Asep 44",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -633,7 +619,7 @@ const article_management =
     {
         "article_id": "045",
         "title_article": "Kesehatan mental 45",
-        "creator": "Asep 45",
+        "author": "Asep 45",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -647,7 +633,7 @@ const article_management =
     {
         "article_id": "046",
         "title_article": "Kesehatan mental 46",
-        "creator": "Asep 46",
+        "author": "Asep 46",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -661,7 +647,7 @@ const article_management =
     {
         "article_id": "047",
         "title_article": "Kesehatan mental 47",
-        "creator": "Asep 47",
+        "author": "Asep 47",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -675,7 +661,7 @@ const article_management =
     {
         "article_id": "048",
         "title_article": "Kesehatan mental 48",
-        "creator": "Asep 48",
+        "author": "Asep 48",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -689,7 +675,7 @@ const article_management =
     {
         "article_id": "049",
         "title_article": "Kesehatan mental 49",
-        "creator": "Asep 49",
+        "author": "Asep 49",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -703,7 +689,7 @@ const article_management =
     {
         "article_id": "050",
         "title_article": "Kesehatan mental 50",
-        "creator": "Asep 50",
+        "author": "Asep 50",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -717,7 +703,7 @@ const article_management =
     {
         "article_id": "051",
         "title_article": "Kesehatan mental 51",
-        "creator": "Asep 51",
+        "author": "Asep 51",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -731,7 +717,7 @@ const article_management =
     {
         "article_id": "052",
         "title_article": "Kesehatan mental 52",
-        "creator": "Asep 52",
+        "author": "Asep 52",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -745,7 +731,7 @@ const article_management =
     {
         "article_id": "053",
         "title_article": "Kesehatan mental 53",
-        "creator": "Asep 53",
+        "author": "Asep 53",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -759,7 +745,7 @@ const article_management =
     {
         "article_id": "054",
         "title_article": "Kesehatan mental 54",
-        "creator": "Asep 54",
+        "author": "Asep 54",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -773,7 +759,7 @@ const article_management =
     {
         "article_id": "055",
         "title_article": "Kesehatan mental 55",
-        "creator": "Asep 55",
+        "author": "Asep 55",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -787,7 +773,7 @@ const article_management =
     {
         "article_id": "056",
         "title_article": "Kesehatan mental 56",
-        "creator": "Asep 56",
+        "author": "Asep 56",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -801,7 +787,7 @@ const article_management =
     {
         "article_id": "057",
         "title_article": "Kesehatan mental 57",
-        "creator": "Asep 57",
+        "author": "Asep 57",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -815,7 +801,7 @@ const article_management =
     {
         "article_id": "058",
         "title_article": "Kesehatan mental 58",
-        "creator": "Asep 58",
+        "author": "Asep 58",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -829,7 +815,7 @@ const article_management =
     {
         "article_id": "059",
         "title_article": "Kesehatan mental 59",
-        "creator": "Asep 59",
+        "author": "Asep 59",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -843,7 +829,7 @@ const article_management =
     {
         "article_id": "060",
         "title_article": "Kesehatan mental 60",
-        "creator": "Asep 60",
+        "author": "Asep 60",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -857,7 +843,7 @@ const article_management =
     {
         "article_id": "061",
         "title_article": "Kesehatan mental 61",
-        "creator": "Asep 61",
+        "author": "Asep 61",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -871,7 +857,7 @@ const article_management =
     {
         "article_id": "062",
         "title_article": "Kesehatan mental 62",
-        "creator": "Asep 62",
+        "author": "Asep 62",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -885,7 +871,7 @@ const article_management =
     {
         "article_id": "063",
         "title_article": "Kesehatan mental 63",
-        "creator": "Asep 63",
+        "author": "Asep 63",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -899,7 +885,7 @@ const article_management =
     {
         "article_id": "064",
         "title_article": "Kesehatan mental 64",
-        "creator": "Asep 64",
+        "author": "Asep 64",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -913,7 +899,7 @@ const article_management =
     {
         "article_id": "065",
         "title_article": "Kesehatan mental 65",
-        "creator": "Asep 65",
+        "author": "Asep 65",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -927,7 +913,7 @@ const article_management =
     {
         "article_id": "066",
         "title_article": "Kesehatan mental 66",
-        "creator": "Asep 66",
+        "author": "Asep 66",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -941,7 +927,7 @@ const article_management =
     {
         "article_id": "067",
         "title_article": "Kesehatan mental 67",
-        "creator": "Asep 67",
+        "author": "Asep 67",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -955,7 +941,7 @@ const article_management =
     {
         "article_id": "068",
         "title_article": "Kesehatan mental 68",
-        "creator": "Asep 68",
+        "author": "Asep 68",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -969,7 +955,7 @@ const article_management =
     {
         "article_id": "069",
         "title_article": "Kesehatan mental 69",
-        "creator": "Asep 69",
+        "author": "Asep 69",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -983,7 +969,7 @@ const article_management =
     {
         "article_id": "070",
         "title_article": "Kesehatan mental 70",
-        "creator": "Asep 70",
+        "author": "Asep 70",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -997,7 +983,7 @@ const article_management =
     {
         "article_id": "071",
         "title_article": "Kesehatan mental 71",
-        "creator": "Asep 71",
+        "author": "Asep 71",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1011,7 +997,7 @@ const article_management =
     {
         "article_id": "072",
         "title_article": "Kesehatan mental 72",
-        "creator": "Asep 72",
+        "author": "Asep 72",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1025,7 +1011,7 @@ const article_management =
     {
         "article_id": "073",
         "title_article": "Kesehatan mental 73",
-        "creator": "Asep 73",
+        "author": "Asep 73",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1039,7 +1025,7 @@ const article_management =
     {
         "article_id": "074",
         "title_article": "Kesehatan mental 74",
-        "creator": "Asep 74",
+        "author": "Asep 74",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1053,7 +1039,7 @@ const article_management =
     {
         "article_id": "075",
         "title_article": "Kesehatan mental 75",
-        "creator": "Asep 75",
+        "author": "Asep 75",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1067,7 +1053,7 @@ const article_management =
     {
         "article_id": "076",
         "title_article": "Kesehatan mental 76",
-        "creator": "Asep 76",
+        "author": "Asep 76",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1081,7 +1067,7 @@ const article_management =
     {
         "article_id": "077",
         "title_article": "Kesehatan mental 77",
-        "creator": "Asep 77",
+        "author": "Asep 77",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1095,7 +1081,7 @@ const article_management =
     {
         "article_id": "078",
         "title_article": "Kesehatan mental 78",
-        "creator": "Asep 78",
+        "author": "Asep 78",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1109,7 +1095,7 @@ const article_management =
     {
         "article_id": "079",
         "title_article": "Kesehatan mental 79",
-        "creator": "Asep 79",
+        "author": "Asep 79",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1123,7 +1109,7 @@ const article_management =
     {
         "article_id": "080",
         "title_article": "Kesehatan mental 80",
-        "creator": "Asep 80",
+        "author": "Asep 80",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1137,7 +1123,7 @@ const article_management =
     {
         "article_id": "081",
         "title_article": "Kesehatan mental 81",
-        "creator": "Asep 81",
+        "author": "Asep 81",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1151,7 +1137,7 @@ const article_management =
     {
         "article_id": "082",
         "title_article": "Kesehatan mental 82",
-        "creator": "Asep 82",
+        "author": "Asep 82",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1165,7 +1151,7 @@ const article_management =
     {
         "article_id": "083",
         "title_article": "Kesehatan mental 83",
-        "creator": "Asep 83",
+        "author": "Asep 83",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1179,7 +1165,7 @@ const article_management =
     {
         "article_id": "084",
         "title_article": "Kesehatan mental 84",
-        "creator": "Asep 84",
+        "author": "Asep 84",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1193,7 +1179,7 @@ const article_management =
     {
         "article_id": "085",
         "title_article": "Kesehatan mental 85",
-        "creator": "Asep 85",
+        "author": "Asep 85",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1207,7 +1193,7 @@ const article_management =
     {
         "article_id": "086",
         "title_article": "Kesehatan mental 86",
-        "creator": "Asep 86",
+        "author": "Asep 86",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1221,7 +1207,7 @@ const article_management =
     {
         "article_id": "087",
         "title_article": "Kesehatan mental 87",
-        "creator": "Asep 87",
+        "author": "Asep 87",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1235,7 +1221,7 @@ const article_management =
     {
         "article_id": "088",
         "title_article": "Kesehatan mental 88",
-        "creator": "Asep 88",
+        "author": "Asep 88",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1249,7 +1235,7 @@ const article_management =
     {
         "article_id": "089",
         "title_article": "Kesehatan mental 89",
-        "creator": "Asep 89",
+        "author": "Asep 89",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1263,7 +1249,7 @@ const article_management =
     {
         "article_id": "090",
         "title_article": "Kesehatan mental 90",
-        "creator": "Asep 90",
+        "author": "Asep 90",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1277,7 +1263,7 @@ const article_management =
     {
         "article_id": "091",
         "title_article": "Kesehatan mental 91",
-        "creator": "Asep 91",
+        "author": "Asep 91",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1291,7 +1277,7 @@ const article_management =
     {
         "article_id": "092",
         "title_article": "Kesehatan mental 92",
-        "creator": "Asep 92",
+        "author": "Asep 92",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1305,7 +1291,7 @@ const article_management =
     {
         "article_id": "093",
         "title_article": "Kesehatan mental 93",
-        "creator": "Asep 93",
+        "author": "Asep 93",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1319,7 +1305,7 @@ const article_management =
     {
         "article_id": "094",
         "title_article": "Kesehatan mental 94",
-        "creator": "Asep 94",
+        "author": "Asep 94",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1333,7 +1319,7 @@ const article_management =
     {
         "article_id": "095",
         "title_article": "Kesehatan mental 95",
-        "creator": "Asep 95",
+        "author": "Asep 95",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1347,7 +1333,7 @@ const article_management =
     {
         "article_id": "096",
         "title_article": "Kesehatan mental 96",
-        "creator": "Asep 96",
+        "author": "Asep 96",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1361,7 +1347,7 @@ const article_management =
     {
         "article_id": "097",
         "title_article": "Kesehatan mental 97",
-        "creator": "Asep 97",
+        "author": "Asep 97",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1375,7 +1361,7 @@ const article_management =
     {
         "article_id": "098",
         "title_article": "Kesehatan mental 98",
-        "creator": "Asep 98",
+        "author": "Asep 98",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,
@@ -1389,7 +1375,7 @@ const article_management =
     {
         "article_id": "099",
         "title_article": "Kesehatan mental 99",
-        "creator": "Asep 99",
+        "author": "Asep 99",
         "doctor_verificator": "Dr. Budi",
         "admin_verificator": "Caca",
         "verification_status": 1,

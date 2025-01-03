@@ -18,6 +18,7 @@ const Header = (props) => {
 
   return (
     <nav
+    id="nav-general"
       class={`bg-white w-full px-5 lg:px-16 py-5 fixed top-0 z-50 transition-all ${
         props.state() ? "border-b border-b-slate-100 shadow-sm" : ""
       }`}
@@ -37,8 +38,11 @@ const Header = (props) => {
             <li class={`${active("")} mx-1.5 sm:mx-6`}>
               <a href="#">Layanan Kami</a>
             </li>
-            <li class={`${active("/article")} mx-1.5 sm:mx-6`}>
+            {/* <li class={`${active("/article")} mx-1.5 sm:mx-6`}>
               <a href="/article">Artikel</a>
+            </li> */}
+            <li class="text-green-500 font-bold">
+              <a href="/">Artikel</a>
             </li>
             <li class={`${active("")} mx-1.5 sm:mx-6`}>
               <a href="#">FAQ</a>

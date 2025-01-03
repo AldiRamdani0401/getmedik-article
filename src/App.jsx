@@ -25,9 +25,9 @@ const App = () => {
     <Router>
       {/* General User */}
       <Route path="/" component={MainLayout}>
-        <Route path="/" component={Home} />
-        <Route path="/article" component={Article} />
-        <Route path="/article/detail" component={Detail} />
+        <Route path="/" component={Article} />
+        {/* <Route path="/article" component={Article} /> */}
+        <Route path="/article/:articleId" component={Detail} />
         <Route path="/*" component={NotFound} />
       </Route>
       {/* Admin */}
