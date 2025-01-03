@@ -9,10 +9,11 @@ import article_datas from "../../../../../../../samples/article/article_datas";
 const datas = [...article_datas];
 
 // Handlers
-function H_Pagination(datas, limit, index, setTotal, filter) {
+function H_Pagination(datas, limit, index, setTotal, filter, search) {
   let filteredData = datas;
   // example: { "filter": "doctor_verificator", "value": "Dr. Budi"} return only Dr.Budi
 
+  // ** FILTER **
   if (filter.filter && filter.value) {
     if (filter.value === "A-Z" || filter.value === "Z-A") {
       filteredData = filteredData.sort((a, b) => {
@@ -62,6 +63,46 @@ function H_Pagination(datas, limit, index, setTotal, filter) {
     }
   }
 
+  // ** SEARCH **
+  if (search.mode !== null && search.keyword !== null) {
+    if (search.mode === "verification_status") {
+      const verificationStatus = {
+        ACCEPTED: 1,
+        PENDING: 2,
+        REJECTED: 3,
+        REVISION: 4,
+      };
+      search.keyword = Object.keys(verificationStatus).find((key) =>
+        key.toLowerCase().includes(search.keyword.toLowerCase())
+      );
+      search.keyword = verificationStatus[search.keyword.toUpperCase()];
+    }
+
+    if (search.mode === "article_status") {
+      const articleStatus = {
+        PUBLISHED: 1,
+        UNPUBLISHED: 2,
+        BANNED: 3,
+        DELETED: 4,
+      };
+      search.keyword = Object.keys(articleStatus).find((key) =>
+        key.toLowerCase().includes(search.keyword.toLowerCase())
+      );
+      search.keyword = articleStatus[search.keyword.toUpperCase()];
+    }
+
+    filteredData = filteredData.filter((data) =>
+      String(data[search.mode])
+        .toLowerCase()
+        .includes(
+          typeof search.keyword === "number"
+            ? search.keyword
+            : search.keyword.toLowerCase()
+        )
+    );
+    setTotal(filteredData.length);
+  }
+
   const paginatedData = filteredData.slice(index * limit, (index + 1) * limit);
   setTotal(filteredData.length);
 
@@ -87,7 +128,9 @@ const DeleteTable = (props) => {
   const [currentPage, setCurrentPage] = createSignal(1);
   const [totalData, setTotalData] = createSignal(null);
   const [totalPage, setTotalPage] = createSignal(null);
+
   const [filter, setFilter] = createSignal({ filter: null, value: null });
+  const [search, setSearch] = createSignal({ mode: null, keyword: null });
 
   // const [click, setClick] = createSignal(0);
 
@@ -103,7 +146,14 @@ const DeleteTable = (props) => {
     } else {
       setSelected(null);
     }
-    const page = H_Pagination(datas, limit(), index(), setTotalData, filter());
+    const page = H_Pagination(
+      datas,
+      limit(),
+      index(),
+      setTotalData,
+      filter(),
+      search()
+    );
     setTotalPage(page.totalPage);
     setCurrentPage(
       currentPage() < page.totalPage ? index() + 1 : currentPage()
@@ -184,7 +234,7 @@ const DeleteTable = (props) => {
             {/* Reset */}
             {limit() > 10 && (
               <button
-                class="bg-red-700 hover:bg-red-500 text-white rounded-full px-2 flex flex-row justify-center"
+                class="bg-red-600 hover:bg-red-500 text-white rounded-full px-2 flex flex-row justify-center font-medium border border-red-700 shadow-xl"
                 onClick={() => {
                   setLimit(10);
                   setIndex(0);
@@ -297,7 +347,7 @@ const DeleteTable = (props) => {
                       (value) => <option value={value}>{value}</option>
                     )}
                   {/* Article Status */}
-                  {filter().filter === "article_status" && (
+                  {filter().filter === "verification_status" && (
                     <>
                       <option class="font-medium text-green-600" value="1">
                         Acception
@@ -319,7 +369,7 @@ const DeleteTable = (props) => {
                     </>
                   )}
                   {/* Verification Status */}
-                  {filter().filter === "verification_status" && (
+                  {filter().filter === "article_status" && (
                     <>
                       <option class="font-medium text-green-600" value="1">
                         Published
@@ -342,10 +392,10 @@ const DeleteTable = (props) => {
                   )}
                 </select>
               )}
-              {/* Reset */}
+              {/* Reset : Filter */}
               {filter().filter !== null && (
                 <button
-                  class="bg-red-700 hover:bg-red-500 text-white rounded-full px-2 flex flex-row justify-center"
+                  class="bg-red-600 hover:bg-red-500 text-white rounded-full px-2 flex flex-row justify-center font-medium border border-red-700 shadow-xl"
                   onClick={() => {
                     setIndex(0);
                     setCurrentPage(1);
@@ -362,7 +412,7 @@ const DeleteTable = (props) => {
               )}
             </div>
             {/* filter value : when filter is choosen */}
-            <select class=" hidden py-0 px-8 border-slate-200" name="" id="">
+            {/* <select class=" hidden py-0 px-8 border-slate-200" name="" id="">
               <option class="bg-slate-50" value="" default>
                 -- select filter value --
               </option>
@@ -375,30 +425,76 @@ const DeleteTable = (props) => {
               <option class="" value="">
                 10
               </option>
-            </select>
+            </select> */}
           </div>
         </div>
-        {/* Group 2 : Search*/}
+        {/* Group 2 : Search */}
         <div class="flex flex-row justify-center xl:justify-end gap-1 w-full border">
-          <select class="py-0 px-8 border-slate-200" name="" id="">
-            <option class="" value="" default>
+          {/* Select Search Mode */}
+          <select
+            class="py-0 px-8 border-slate-200"
+            name=""
+            id="search-mode"
+            onclick={(e) => {
+              e.target[0].setAttribute("disabled", true);
+            }}
+            onChange={(e) => {
+              setIndex(0);
+              setCurrentPage(1);
+              setSearch((prev) => ({
+                ...prev,
+                mode: e.target.value,
+              }));
+            }}
+          >
+            <option class="" value="default" defaultValue>
               -- select keyword --
             </option>
-            <option class="" value="">
-              Article ID
-            </option>
-            <option class="" value="">
-              10
-            </option>
-            <option class="" value="">
-              10
-            </option>
+            {Object.keys(datas[0]).map((key) => {
+              if (key != "content") {
+                return (
+                  <option value={key}>
+                    {H_Article_Format.object_key(key)}
+                  </option>
+                );
+              }
+            })}
           </select>
           <div class="flex flex-row">
-            <input type="text" class="py-0 border-slate-200" />
-            <button class="px-2 bg-blue-900 text-white border border-blue-900 rounded-r-md">
+            <input
+              id="search-input"
+              type="text"
+              class="py-0 border-slate-200"
+            />
+            <button
+              class="px-2 bg-blue-900 text-white border border-blue-900 rounded-r-md"
+              onclick={() => {
+                const element = document.getElementById("search-input");
+                setSearch((prev) => ({ ...prev, keyword: element.value }));
+                console.log(search());
+              }}
+            >
               <Search />
             </button>
+            {/* Reset : Search */}
+            {search().mode !== null && (
+              <button
+                class="bg-red-600 hover:bg-red-500 text-white rounded-full px-2 flex flex-row justify-center font-medium border border-red-700 shadow-xl ml-1"
+                onClick={() => {
+                  setIndex(0);
+                  setCurrentPage(1);
+                  document.getElementById("search-input").value = null;
+                  document.getElementById("search-mode").value = "default";
+                  setSearch((prev) => ({
+                    ...prev,
+                    mode: null,
+                    keyword: null,
+                  }));
+                }}
+              >
+                {"X"}
+              </button>
+            )}
           </div>
         </div>
       </div>
@@ -430,6 +526,10 @@ const DeleteTable = (props) => {
               </th>
               <th class="font-semibold border px-2 text-nowrap">
                 Admin Verificator
+              </th>
+              <th class="font-semibold border px-2 text-nowrap">Category</th>
+              <th class="font-semibold border px-2 text-nowrap">
+                Sub Category
               </th>
               <th class="font-semibold border px-2 text-nowrap">
                 Verification Status

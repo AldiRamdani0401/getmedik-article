@@ -38,8 +38,11 @@ const Header = (props) => {
             <li class={`${active("")} mx-1.5 sm:mx-6`}>
               <a href="#">Layanan Kami</a>
             </li>
-            <li class={`${active("/article")} mx-1.5 sm:mx-6`}>
+            {/* <li class={`${active("/article")} mx-1.5 sm:mx-6`}>
               <a href="/article">Artikel</a>
+            </li> */}
+            <li class="text-green-500 font-bold">
+              <a href="/">Artikel</a>
             </li>
             <li class={`${active("")} mx-1.5 sm:mx-6`}>
               <a href="#">FAQ</a>

@@ -125,6 +125,8 @@ const Rows = (props) => {
   const [articleId, setArticleId] = createSignal(null);
   const [titleArticle, setTitleArticle] = createSignal(null);
   const [author, setAuthor] = createSignal(null);
+  const [category, setCategory] = createSignal(null);
+  const [subCategory, setSubCategory] = createSignal(null);
   const [doctorVerificator, setDoctorVerificator] = createSignal(null);
   const [adminVerificator, setAdminVerificator] = createSignal(null);
   const [statusVerification, setStatusVerification] = createSignal(null);
@@ -140,6 +142,8 @@ const Rows = (props) => {
   setTitleArticle(props.data?.title_article);
   setAuthor(props.data?.author);
   setDoctorVerificator(props.data?.doctor_verificator?.name);
+  setCategory(props.data?.category);
+  setSubCategory(props.data?.sub_category);
   setAdminVerificator(props.data?.admin_verificator?.name);
   setStatusVerification(
     H_Article_Format.status_verification(props.data?.verification_status)
@@ -248,6 +252,10 @@ const Rows = (props) => {
       <td class="border text-center px-2 py-2 text-nowrap ">
         {adminVerificator()}
       </td>
+      {/* Category */}
+      <td class="border text-center px-2 py-2 text-nowrap ">{category()}</td>
+      {/* Sub Category */}
+      <td class="border text-center px-2 py-2 text-nowrap ">{subCategory()}</td>
       {/* Verification Status */}
       <td
         class={
