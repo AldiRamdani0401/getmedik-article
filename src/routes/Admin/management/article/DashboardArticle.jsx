@@ -83,7 +83,7 @@ const DashboardArticle = () => {
         {/* Control Table Article */}
         <div class="flex flex-row justify-between md:gap-5 lg:gap-2 xl:gap-10">
           {/* Tabs */}
-          <div class="flex flex-row gap-2">
+          {/* <div class="flex flex-row gap-2">
             {tabs.map((tab) => (
               <button
                 class={`px-5 pt-1 ${
@@ -99,7 +99,7 @@ const DashboardArticle = () => {
                 {tab}
               </button>
             ))}
-          </div>
+          </div> */}
         </div>
         {renderFragment()}
       </div>

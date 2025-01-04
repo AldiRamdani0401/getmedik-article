@@ -9,7 +9,9 @@ export default {
   ],
   theme: {
     extend: {
-
+      colors: {
+        info: '#0000ff',
+      }
     },
   },
   plugins: [forms],

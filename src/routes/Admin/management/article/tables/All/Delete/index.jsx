@@ -19,7 +19,6 @@ const DeleteTable = (props) => {
 
   // == Delete Mode
   const [selectedDeleteMode, setSelectedDeleteMode] = createSignal([]);
-
   const [selectedForDelete, setSelectedForDelete] = createSignal([]);
 
   // == Pagination
